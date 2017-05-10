@@ -1,0 +1,157 @@
+//
+//  PrefixHeader.pch
+//  Genius_IM
+//
+//  Created by Graphic-one on 17/1/23.
+//  Copyright © 2017年 Graphic-one. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+/** stystem Foundation */
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+/** custom Foundation */
+#import "GAThemeHelper.h"
+#import "GANetworkApis.h"
+
+/** other libs */
+#import <YYKit.h>
+#import <ReactiveObjC.h>
+#import <UIImageView+WebCache.h>
+
+#define LOG_LEVEL_DEF ddLogLevel
+#import <CocoaLumberjack/CocoaLumberjack.h>
+//static const  DDLogLevel ddLogLevel = DDLogLevelAll;
+#ifdef DEBUG
+static const int ddLogLevel = DDLogLevelVerbose;
+#else
+static const int ddLogLevel = DDLogLevelWarning;
+#endif
+
+/** GA categorys */
+#import "NSString+Collection.h"
+#import "UIColor+Collection.h"
+#import "UIView+Collection.h"
+
+
+/** macro definition */
+
+///< global layout padding
+#define kPadding_top 16
+#define kPadding_bottom kPadding_top
+#define kPadding_left 16
+#define kPadding_right kPadding_left
+
+///< default UI setting ...
+#define kUINaviBarDefaultBgColor                    [UIColor new]
+#define kUINaviBarDefaultTitleTextColor             [UIColor new]
+#define kUINaviBarDefaultTitleTextFontName          [NSString new]
+#define kUINaviBarDefaultTitleTextFontSize          23
+#define kUINaviBarDefaultItemTextColor              [UIColor new]
+#define kUINaviBarDefaultItemTextFontName           [NSString new]
+#define kUINaviBarDefaultItemTextFontSize           23
+
+#define kUITabBarDefaultBgColor                     [UIColor new]
+#define kUITabBarDefaultItemTextColor               [UIColor new]
+#define kUITabBarDefaultItemTextFontName            [NSString new]
+#define kUITabBarDefaultItemTextFontSize            23
+#define kUITabBarDefaultItemImages                  [NSArray new]
+
+#define kMsgListDefaultBgColor                      [UIColor new]
+#define kMsgListDefaultTextColor                    [UIColor new]
+#define kMsgListDefaultTextFontName                 [NSString new]
+#define kMsgListDefaultTextFontSize                 23
+
+#define kMsgChatDefaultMaskColor                    [[UIColor blackColor] colorWithAlphaComponent:0.6]
+#define kMsgChatDefaultFontSize                     23
+#define kMsgChatDefaultLinkColor                    [UIColor new]
+
+#define kMsgChatSenderDefaultBgColor                [UIColor new]
+#define kMsgChatSenderDefaultTextColor              [UIColor new]
+#define kMsgChatSenderDefaultTextFontName           [NSString new]
+
+#define kMsgChatSelfDefaultBgColor                  [UIColor new]
+#define kMsgChatSelfDefaultTextColor                [UIColor new]
+#define kMsgChatSelfDefaultTextFontName             [NSString new]
+
+
+
+/** enumLists */
+typedef NS_ENUM(NSInteger,ResultCode){///< 服务器code
+    ResultCodeSuccess               = 1,
+    
+    ResultCodeNotFoundUser          = 4041,
+    ResultCodeNotFoundGroup         = 4042,
+    ResultCodeNotFoundGroupMember   = 4043,
+    
+    ResultCodeCreateUser            = 3001,
+    ResultCodeCreateGroup           = 3002,
+    ResultCodeCreateMessage         = 3003,
+    
+    ResultCodeParameter             = 4001,
+    ResultCodeParameterExistAccount = 4002,
+    ResultCodeParameterExistName    = 4003,
+    
+    ResultCodeAccountToken          = 2001,///< 未登录 token失效
+    ResultCodeAccountLogin          = 2002,
+    ResultCodeAccountRegister       = 2003,
+    ResultCodeAccoutNoPermission    = 2010,///< 没有权限
+    
+    ResultCodeFailure               = 0,
+    ResultCodeService               = 5001,
+};
+
+typedef NS_ENUM(NSUInteger,UserStatus){///< 用户状态
+    UserStatusOffline = 0,
+    
+    UserStatusOnline  = 1,
+};
+
+typedef NS_ENUM(NSUInteger,MessageType){///< 消息类型
+    MessageTypeString = 0,
+    MessageTypeImage  = 1,
+    MessageTypeFile   = 2,
+    MessageTypeVideo  = 3,
+    MessageTypeAudio  = 4,
+};
+
+typedef NS_ENUM(NSUInteger,MessageStatus){///< 消息发送状态
+    MessageStatusSendIn     = 1,
+    MessageStatusSendDone   = 2,
+};
+
+typedef NS_ENUM(NSUInteger,UserSex){///< 用户性别
+    UserSexUnknow = 0,
+    UserSexMale   = 1,
+    UserSexFemale = 2,
+};
+
+typedef NS_ENUM(NSUInteger,UserFollowStatus){///< 用户关系
+    UserFollowStatusNone    = 0,
+    UserFollowStatusOther   = 1,
+    UserFollowStatusSelf    = 2,
+    UserFollowStatusMutual  = 3,
+};
+
+typedef NS_ENUM(NSInteger,SessionType){///< 会话类型
+    SessionTypePrivate = 1,
+    SessionTypeGroup   = 2,
+    
+    SessionTypeUnknow  = 0,
+};
+
+
+/** UserDefault keys list*/
+FOUNDATION_EXPORT NSString * const GAUserDefaultsCurThemme ; ///< value is [NSDictionary Class] ...
+FOUNDATION_EXTERN NSString * const GAUserSettingInfo       ; ///< value is 'User id' ... type is [NSString Class] ...
+
+/** log handle */
+//#define GAErrorLog(...) NSLog(__VA_ARGS__)
+
+
+
+#endif /* PrefixHeader_pch */

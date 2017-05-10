@@ -1,0 +1,14 @@
+//
+//  DebugConfig.xcconfig
+//  Genius_IM
+//
+//  Created by Graphic-one on 17/1/24.
+//  Copyright © 2017年 Graphic-one. All rights reserved.
+//
+
+#include "Share.xcconfig"
+#include "Pods/Target Support Files/Pods/Pods.debug.xcconfig"
+
+
+GA_DISPLAYNAME = Genius_Debug
+
